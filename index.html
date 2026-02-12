@@ -1,625 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CV | Hector Vergara</title>
+    <meta charset="UTF-8">
+    <title>Currículum | Héctor Vergara</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tipografías gamer/anime -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-  <style>
-    :root{
-      --bg0:#070A14;
-      --bg1:#0B1024;
-      --card:#0E1534cc;
-      --line:#ffffff1f;
-      --text:#EAF0FF;
-      --muted:#B7C3FF;
-      --brand1:#7C3AED; /* morado neon */
-      --brand2:#22D3EE; /* cyan neon */
-      --brand3:#F472B6; /* pink */
-      --shadow: 0 18px 60px #00000066;
-      --radius: 22px;
-    }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 10% -10%, #7c3aed33 0%, transparent 55%),
-        radial-gradient(900px 600px at 110% 15%, #22d3ee2a 0%, transparent 55%),
-        radial-gradient(900px 600px at 35% 120%, #f472b622 0%, transparent 50%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-    }
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
 
-    /* fondo "anime / gamer" con grid y partículas */
-    .bg-grid{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(#ffffff0d 1px, transparent 1px) 0 0/28px 28px,
-        linear-gradient(90deg, #ffffff0d 1px, transparent 1px) 0 0/28px 28px;
-      mask-image: radial-gradient(ellipse at center, #000 45%, transparent 70%);
-      opacity:.35;
-    }
-    .bg-stars{
-      position:fixed;
-      inset:-200px;
-      pointer-events:none;
-      background:
-        radial-gradient(circle, #ffffff55 0 1px, transparent 2px) 0 0/120px 120px,
-        radial-gradient(circle, #ffffff44 0 1px, transparent 2px) 40px 60px/160px 160px,
-        radial-gradient(circle, #ffffff33 0 1px, transparent 2px) 10px 90px/220px 220px;
-      opacity:.25;
-      filter: blur(.2px);
-      transform: rotate(8deg);
-    }
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
 
-    .wrap{
-      width:min(1040px, 92vw);
-      margin:42px auto 60px;
-      position:relative;
-    }
+        p {
+            line-height: 1.6;
+        }
 
-    .card{
-      background: linear-gradient(180deg, #0e1534cc, #0b1024cc);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
+        ul {
+            line-height: 1.6;
+        }
 
-    /* borde neon */
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: linear-gradient(90deg, #7c3aed, #22d3ee, #f472b6, #7c3aed);
-      opacity:.55;
-      filter: blur(18px);
-      z-index:0;
-    }
-    .card > *{ position:relative; z-index:1; }
+        .info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    /* HEADER */
-    .header{
-      padding:28px 28px 18px;
-      border-bottom:1px solid var(--line);
-      background:
-        linear-gradient(180deg, #0b1024cc, transparent),
-        radial-gradient(700px 220px at 20% 0%, #7c3aed33, transparent 55%),
-        radial-gradient(700px 220px at 85% 30%, #22d3ee22, transparent 55%);
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns: 120px 1fr;
-      gap:18px;
-      align-items:center;
-    }
-
-    .avatar{
-      width:120px;
-      height:120px;
-      border-radius:999px;
-      border:3px solid #ffffff55;
-      box-shadow: 0 0 0 6px #ffffff0a, 0 0 35px #22d3ee22;
-      overflow:hidden;
-      background:linear-gradient(135deg, #7c3aed33, #22d3ee22);
-      position:relative;
-    }
-    .avatar img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    /* aro neon */
-    .avatar::after{
-      content:"";
-      position:absolute;
-      inset:-10px;
-      border-radius:999px;
-      background: conic-gradient(from 120deg, #7c3aed, #22d3ee, #f472b6, #7c3aed);
-      filter: blur(14px);
-      opacity:.35;
-      z-index:-1;
-    }
-
-    .name{
-      font-family: Orbitron, sans-serif;
-      letter-spacing: .06em;
-      text-transform:uppercase;
-      font-size: clamp(26px, 3.2vw, 44px);
-      line-height:1.05;
-      margin:0;
-    }
-
-    .role{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-weight:600;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      font-size: 13px;
-    }
-
-    .topbar{
-      margin-top:14px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#0b1024aa;
-      color:var(--text);
-      font-size:13px;
-      white-space:nowrap;
-    }
-    .chip svg{ width:16px; height:16px; opacity:.9 }
-
-    .badge{
-      font-family: Orbitron, sans-serif;
-      font-size:12px;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid #ffffff22;
-      background:
-        linear-gradient(135deg, #7c3aed1f, #22d3ee14),
-        radial-gradient(120px 80px at 30% 30%, #f472b622, transparent 60%);
-      box-shadow: 0 0 0 1px #ffffff0c inset;
-      color: #EAF0FF;
-      letter-spacing:.06em;
-    }
-    .badge span{
-      color: var(--brand2);
-      font-weight:800;
-    }
-
-    /* BODY LAYOUT */
-    .body{
-      padding:22px 22px 26px;
-      display:grid;
-      grid-template-columns: 1.35fr .9fr;
-      gap:18px;
-    }
-
-    @media (max-width: 880px){
-      .hero{ grid-template-columns: 88px 1fr; }
-      .avatar{ width:88px; height:88px; }
-      .body{ grid-template-columns: 1fr; }
-      .topbar{ justify-content:flex-start; }
-    }
-
-    .panel{
-      border:1px solid var(--line);
-      background:#0b1024aa;
-      border-radius:18px;
-      padding:16px;
-      box-shadow: 0 0 0 1px #ffffff0b inset;
-    }
-
-    .section-title{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin:0 0 12px;
-      font-family: Orbitron, sans-serif;
-      font-size:14px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:#F5F7FF;
-    }
-    .section-title .bar{
-      flex:1;
-      height:1px;
-      background: linear-gradient(90deg, #ffffff33, transparent);
-    }
-    .kicker{
-      color:var(--muted);
-      font-size:13px;
-      margin:0 0 8px;
-      line-height:1.55;
-    }
-
-    /* items experiencia/educación */
-    .item{
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid #ffffff14;
-      background: linear-gradient(180deg, #0e153433, #0b102433);
-      margin-bottom:12px;
-    }
-    .item:last-child{ margin-bottom:0; }
-
-    .item h4{
-      margin:0 0 4px;
-      font-size:14px;
-      color:#fff;
-      letter-spacing:.02em;
-    }
-    .meta{
-      color:var(--muted);
-      font-size:12.5px;
-      margin:0 0 8px;
-    }
-    .item ul{
-      margin:0;
-      padding-left:18px;
-      color:#DCE5FF;
-      font-size:13px;
-      line-height:1.55;
-    }
-
-    /* habilidades */
-    .list{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .list li{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid #ffffff14;
-      background:#0b102499;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:99px;
-      background: linear-gradient(135deg, var(--brand1), var(--brand2));
-      box-shadow: 0 0 14px #22d3ee33;
-    }
-    .list strong{ font-size:13px; font-weight:700; }
-    .list span{ font-size:12.5px; color:var(--muted); margin-left:auto; }
-
-    /* barras soft skills */
-    .bars{
-      display:grid;
-      gap:12px;
-      margin-top:10px;
-    }
-    .barrow{
-      display:grid;
-      gap:8px;
-    }
-    .barrow label{
-      font-size:12.5px;
-      color:#DCE5FF;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .track{
-      height:10px;
-      border-radius:999px;
-      border:1px solid #ffffff14;
-      background:#0b1024aa;
-      overflow:hidden;
-    }
-    .fill{
-      height:100%;
-      width:70%;
-      border-radius:999px;
-      background: linear-gradient(90deg, var(--brand1), var(--brand2));
-      box-shadow: 0 0 18px #7c3aed22;
-    }
-    .fill.w85{ width:85%; }
-    .fill.w65{ width:65%; }
-    .fill.w55{ width:55%; }
-
-    /* idiomas */
-    .lang{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid #ffffff14;
-      background:#0b102499;
-      margin-bottom:10px;
-    }
-    .lang:last-child{ margin-bottom:0; }
-    .pill{
-      font-family: Orbitron, sans-serif;
-      font-size:11px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid #ffffff22;
-      color:#fff;
-      background: linear-gradient(135deg, #7c3aed22, #22d3ee18);
-      letter-spacing:.06em;
-      margin-left:auto;
-    }
-
-    /* intereses */
-    .footer{
-      padding:18px 22px 24px;
-      border-top:1px solid var(--line);
-      background: radial-gradient(900px 240px at 50% 0%, #22d3ee1c, transparent 60%);
-    }
-    .interest-grid{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
-    }
-    @media (max-width: 720px){
-      .interest-grid{ grid-template-columns: repeat(2, 1fr); }
-    }
-    .interest{
-      border:1px solid #ffffff14;
-      background:#0b1024aa;
-      border-radius:18px;
-      padding:14px 12px;
-      text-align:center;
-    }
-    .interest svg{
-      width:34px;
-      height:34px;
-      opacity:.95;
-      filter: drop-shadow(0 0 10px #22d3ee20);
-    }
-    .interest p{
-      margin:10px 0 0;
-      font-size:12.5px;
-      color:#DCE5FF;
-      letter-spacing:.02em;
-    }
-
-    /* mini “glow” anim */
-    @media (prefers-reduced-motion: no-preference){
-      .card::before{
-        animation: glow 5.2s linear infinite;
-        background-size: 200% 200%;
-      }
-      @keyframes glow{
-        0%{ filter: blur(18px); opacity:.45; background-position:0% 50%; }
-        50%{ filter: blur(22px); opacity:.62; background-position:100% 50%; }
-        100%{ filter: blur(18px); opacity:.45; background-position:0% 50%; }
-      }
-    }
-  </style>
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: gray;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="bg-stars"></div>
-  <div class="bg-grid"></div>
 
-  <main class="wrap">
-    <article class="card">
-      <!-- HEADER -->
-      <header class="header">
-        <div class="hero">
-          <div class="avatar">
-            <!-- Cambia la ruta por tu foto -->
-            <img src="tu_foto.jpg" alt="Foto de perfil de Hector Vergara">
-          </div>
-
-          <div>
-            <h1 class="name">HECTOR VERGARA</h1>
-            <p class="role">Estudiante de Ingeniería en Informática</p>
-
-            <div class="topbar">
-              <div class="chips">
-                <div class="chip" title="Teléfono">
-                  <!-- icon phone -->
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M6.5 3.5h2l1.2 4-1.6 1.6c1.3 2.4 3.2 4.2 5.6 5.6l1.6-1.6 4 1.2v2c0 1-0.8 1.8-1.8 1.7-8.3-.7-14.7-7.1-15.4-15.4C4.7 4.3 5.5 3.5 6.5 3.5Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6" stroke-linejoin="round"/>
-                  </svg>
-                  <span>+52 000 000 0000</span>
-                </div>
-
-                <div class="chip" title="Email">
-                  <!-- icon mail -->
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4.5 7.5h15v10h-15v-10Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6" />
-                    <path d="M5 8l7 6 7-6" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <span>correo@ejemplo.com</span>
-                </div>
-
-                <div class="chip" title="Ubicación">
-                  <!-- icon pin -->
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M12 21s6-6 6-11a6 6 0 1 0-12 0c0 5 6 11 6 11Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6" />
-                    <path d="M12 12.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6"/>
-                  </svg>
-                  <span>Ciudad, País</span>
-                </div>
-              </div>
-
-              <div class="badge">MODE: <span>GAMER</span> / ANIME</div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- BODY -->
-      <section class="body">
-        <!-- COLUMNA IZQUIERDA -->
-        <div style="display:grid; gap:18px;">
-          <section class="panel">
-            <h2 class="section-title">
-              PERFIL <span class="bar"></span>
-            </h2>
-            <p class="kicker">
-              Breve descripción sobre mí y mis objetivos profesionales. Ejemplo:
-              estudiante de Ingeniería en Informática con interés en desarrollo web/app,
-              bases de datos y proyectos con enfoque creativo (estilo gamer).
-            </p>
-          </section>
-
-          <section class="panel">
-            <h2 class="section-title">
-              EXPERIENCIA LABORAL <span class="bar"></span>
-            </h2>
-
-            <div class="item">
-              <h4>Nombre del Puesto</h4>
-              <p class="meta"><strong>Nombre de la Empresa</strong> · 20XX – 20XX</p>
-              <ul>
-                <li>Descripción breve de responsabilidades y logros medibles.</li>
-                <li>Ejemplo: Soporte a usuarios, documentación, organización de archivos.</li>
-              </ul>
-            </div>
-
-            <div class="item">
-              <h4>Nombre del Puesto</h4>
-              <p class="meta"><strong>Nombre de la Empresa</strong> · 20XX – 20XX</p>
-              <ul>
-                <li>Descripción breve de responsabilidades y logros.</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="panel">
-            <h2 class="section-title">
-              EDUCACIÓN <span class="bar"></span>
-            </h2>
-
-            <div class="item">
-              <h4>Nombre de la Universidad</h4>
-              <p class="meta">Carrera de Informática · 20XX – Actualidad</p>
-              <ul>
-                <li>Enfoque: desarrollo web/app, BD, seguridad, proyectos integradores.</li>
-              </ul>
-            </div>
-
-            <div class="item">
-              <h4>Nombre del Instituto</h4>
-              <p class="meta">Título de Bachiller · 20XX</p>
-              <ul>
-                <li>Especialidad / área (opcional).</li>
-              </ul>
-            </div>
-          </section>
+    <div class="container">
+        <h1>Héctor Vergara</h1>
+        <div class="info">
+            <p><strong>Estudiante de Ingeniería en Informática</strong></p>
+            <p>Email: correo@ejemplo.com | Tel: +52 000 000 0000</p>
+            <p>Ciudad, País</p>
         </div>
 
-        <!-- COLUMNA DERECHA -->
-        <aside style="display:grid; gap:18px;">
-          <section class="panel">
-            <h2 class="section-title">
-              HABILIDADES <span class="bar"></span>
-            </h2>
+        <h2>Perfil</h2>
+        <p>
+            Estudiante de Ingeniería en Informática con interés en desarrollo de software,
+            bases de datos y tecnologías web. Me enfoco en aprender constantemente
+            y mejorar mis habilidades técnicas.
+        </p>
 
-            <ul class="list">
-              <li><span class="dot"></span> <strong>Programación</strong> <span>Junior</span></li>
-              <li><span class="dot"></span> <strong>Bases de Datos</strong> <span>Intermedio</span></li>
-              <li><span class="dot"></span> <strong>Desarrollo Web</strong> <span>Intermedio</span></li>
-              <li><span class="dot"></span> <strong>Resolución de Problemas</strong> <span>Fuerte</span></li>
-            </ul>
+        <h2>Habilidades</h2>
+        <ul>
+            <li>Programación</li>
+            <li>Bases de Datos</li>
+            <li>Desarrollo Web</li>
+            <li>Resolución de Problemas</li>
+            <li>Trabajo en equipo</li>
+        </ul>
 
-            <div class="bars">
-              <div class="barrow">
-                <label>Trabajo en equipo <span>85%</span></label>
-                <div class="track"><div class="fill w85"></div></div>
-              </div>
-              <div class="barrow">
-                <label>Comunicación <span>65%</span></label>
-                <div class="track"><div class="fill w65"></div></div>
-              </div>
-              <div class="barrow">
-                <label>Adaptabilidad <span>55%</span></label>
-                <div class="track"><div class="fill w55"></div></div>
-              </div>
-            </div>
-          </section>
+        <h2>Educación</h2>
+        <p>
+            <strong>Ingeniería en Informática</strong><br>
+            Nombre de la Universidad<br>
+            20XX - Actualidad
+        </p>
 
-          <section class="panel">
-            <h2 class="section-title">
-              IDIOMAS <span class="bar"></span>
-            </h2>
+        <h2>Experiencia</h2>
+        <p>
+            <strong>Nombre del Puesto</strong><br>
+            Nombre de la Empresa | 20XX - 20XX
+        </p>
+        <ul>
+            <li>Responsabilidad o logro importante</li>
+            <li>Otra actividad realizada</li>
+        </ul>
 
-            <div class="lang">
-              <span>Español (Nativo)</span>
-              <span class="pill">S+</span>
-            </div>
-            <div class="lang">
-              <span>Inglés (Intermedio)</span>
-              <span class="pill">B1</span>
-            </div>
-            <div class="lang">
-              <span>Otro Idioma</span>
-              <span class="pill">---</span>
-            </div>
-          </section>
-        </aside>
-      </section>
+        <h2>Idiomas</h2>
+        <ul>
+            <li>Español (Nativo)</li>
+            <li>Inglés (Intermedio)</li>
+        </ul>
 
-      <!-- FOOTER: INTERESES -->
-      <footer class="footer">
-        <h2 class="section-title" style="margin-bottom:14px;">
-          INTERESES <span class="bar"></span>
-        </h2>
-
-        <div class="interest-grid">
-          <div class="interest">
-            <!-- icon monitor/code -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4.5 6.5h15v9h-15v-9Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6"/>
-              <path d="M8 19.5h8" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M8.5 10l2-2 2 2-2 2-2-2Z" stroke="#22D3EE" stroke-opacity=".9" stroke-width="1.2" />
-            </svg>
-            <p>Tecnología</p>
-          </div>
-
-          <div class="interest">
-            <!-- icon gamepad -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M7.8 9h8.4c1.1 0 2 .7 2.3 1.7l1 3.8c.4 1.6-.8 3.1-2.4 3.1-1 0-1.9-.6-2.3-1.5l-.4-.9H9.6l-.4.9c-.4.9-1.3 1.5-2.3 1.5-1.6 0-2.8-1.5-2.4-3.1l1-3.8C5.8 9.7 6.7 9 7.8 9Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6" stroke-linejoin="round"/>
-              <path d="M8.5 12.2h2.4M9.7 11v2.4" stroke="#22D3EE" stroke-opacity=".95" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M15.6 11.6h.01M17.1 13.1h.01" stroke="#F472B6" stroke-width="2.3" stroke-linecap="round"/>
-            </svg>
-            <p>Videojuegos</p>
-          </div>
-
-          <div class="interest">
-            <!-- icon book -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5.5 5.8c3.7-1.3 6.7-.8 9 1.1v13c-2.3-1.9-5.3-2.4-9-1.1v-13Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6"/>
-              <path d="M18.5 5.8c-3.7-1.3-6.7-.8-9 1.1v13c2.3-1.9 5.3-2.4 9-1.1v-13Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6"/>
-            </svg>
-            <p>Lectura</p>
-          </div>
-
-          <div class="interest">
-            <!-- icon camera -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M7.5 7.5 9 6h6l1.5 1.5H20a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18V9A1.5 1.5 0 0 1 4 7.5h3.5Z" stroke="#EAF0FF" stroke-opacity=".9" stroke-width="1.6" stroke-linejoin="round"/>
-              <path d="M12 16.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" stroke="#22D3EE" stroke-opacity=".9" stroke-width="1.6"/>
-            </svg>
-            <p>Fotografía</p>
-          </div>
+        <div class="footer">
+            © 2026 Héctor Vergara - Ingeniería en Informática
         </div>
-      </footer>
-    </article>
-  </main>
+    </div>
+
 </body>
 </html>
