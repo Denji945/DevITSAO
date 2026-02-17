@@ -1,188 +1,407 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Currículum | Héctor Vergara</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currículum | Héctor Vergara</title>
 
-<style>
-:root{
-    --color-principal:#4f46e5;
-    --color-secundario:#eef2ff;
-    --texto:#1f2937;
-}
+  <style>
+    :root{
+      --bg:#070A12;
+      --bg2:#0B1023;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --line: rgba(255,255,255,.14);
 
-body{
-    margin:0;
-    font-family:system-ui,Segoe UI,Arial;
-    background:#f1f5f9;
-    color:var(--texto);
-}
+      --txt:#EAF0FF;
+      --muted:#AAB6D6;
 
-.container{
-    max-width:950px;
-    margin:40px auto;
-    background:white;
-    border-radius:14px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    overflow:hidden;
-}
+      --neon1:#22D3EE;   /* cian */
+      --neon2:#A78BFA;   /* morado */
+      --neon3:#34D399;   /* verde */
+      --danger:#FB7185;
 
-header{
-    background:linear-gradient(135deg,var(--color-principal),#6366f1);
-    color:white;
-    padding:30px;
-    display:flex;
-    align-items:center;
-    gap:25px;
-    flex-wrap:wrap;
-}
+      --radius:18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --glow: 0 0 22px rgba(34,211,238,.25), 0 0 48px rgba(167,139,250,.18);
+    }
 
-.avatar{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:#ddd;
-    object-fit:cover;
-    border:4px solid white;
-}
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(34,211,238,.20), transparent 55%),
+        radial-gradient(900px 700px at 90% 10%, rgba(167,139,250,.18), transparent 55%),
+        radial-gradient(900px 700px at 40% 110%, rgba(52,211,153,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
+    }
 
-.header-info h1{
-    margin:0;
-    font-size:28px;
-}
+    /* Fondo tipo “grid gamer” */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at top, rgba(0,0,0,.75), transparent 70%);
+      pointer-events:none;
+      opacity:.35;
+    }
 
-.header-info p{
-    margin:5px 0;
-    opacity:.95;
-}
+    .wrap{
+      max-width: 1050px;
+      margin: 36px auto;
+      padding: 0 16px;
+      position:relative;
+      z-index:1;
+    }
 
-section{
-    padding:25px 35px;
-    border-bottom:1px solid #e5e7eb;
-}
+    .card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
 
-section:last-child{
-    border-bottom:none;
-}
+    /* Borde con brillo */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(90deg, rgba(34,211,238,.75), rgba(167,139,250,.75), rgba(52,211,153,.65));
+      filter: blur(16px);
+      opacity:.25;
+      pointer-events:none;
+    }
 
-h2{
-    color:var(--color-principal);
-    margin-bottom:10px;
-}
+    header{
+      position:relative;
+      padding: 26px 26px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(900px 360px at 20% 0%, rgba(34,211,238,.20), transparent 55%),
+        radial-gradient(900px 360px at 80% 0%, rgba(167,139,250,.20), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    }
 
-ul{ padding-left:18px; }
-li{ margin:6px 0; }
+    .top{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
+    .avatar{
+      width:110px;
+      height:110px;
+      border-radius: 50%;
+      object-fit:cover;
+      border: 3px solid rgba(255,255,255,.65);
+      box-shadow: var(--glow);
+      background: rgba(255,255,255,.1);
+      flex: 0 0 auto;
+    }
 
-.boton{
-    display:inline-block;
-    padding:12px 22px;
-    background:var(--color-principal);
-    color:white;
-    border-radius:8px;
-    text-decoration:none;
-    margin-top:20px;
-    transition:.2s;
-}
+    .title{
+      flex: 1 1 340px;
+      min-width: 260px;
+    }
 
-.boton:hover{ transform:translateY(-2px); }
+    .name{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:0;
+      font-size: 28px;
+      letter-spacing:.4px;
+    }
 
-.upload{
-    margin-top:10px;
-    font-size:14px;
-}
+    .tag{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(34,211,238,.35);
+      background: rgba(34,211,238,.08);
+      color: #C9FBFF;
+      box-shadow: 0 0 18px rgba(34,211,238,.10);
+    }
 
-.footer{
-    text-align:center;
-    padding:20px;
-    font-size:13px;
-    color:#6b7280;
-}
+    .role{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing:.2px;
+    }
 
-@media(max-width:700px){
-    header{flex-direction:column;text-align:center}
-    .grid{grid-template-columns:1fr}
-}
-</style>
+    .meta{
+      margin: 10px 0 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color: rgba(234,240,255,.85);
+      font-size: 14px;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(6px);
+    }
+
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--neon1);
+      box-shadow: 0 0 12px rgba(34,211,238,.65);
+    }
+
+    .dot.purple{ background: var(--neon2); box-shadow: 0 0 12px rgba(167,139,250,.65); }
+    .dot.green{ background: var(--neon3); box-shadow: 0 0 12px rgba(52,211,153,.55); }
+
+    .content{
+      padding: 20px 26px 26px;
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap:16px;
+    }
+
+    @media (max-width: 900px){
+      .content{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 16px 16px;
+      position:relative;
+    }
+
+    .panel:hover{
+      border-color: rgba(34,211,238,.25);
+      box-shadow: 0 0 0 1px rgba(34,211,238,.15) inset, 0 0 28px rgba(34,211,238,.08);
+      transition: .18s ease;
+    }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: .9px;
+      text-transform: uppercase;
+      color: rgba(234,240,255,.90);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    h2::before{
+      content:"";
+      width:10px; height:10px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--neon1), var(--neon2));
+      box-shadow: var(--glow);
+    }
+
+    p{ margin: 0 0 10px; color: rgba(234,240,255,.86); line-height:1.6; }
+
+    ul{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(234,240,255,.86);
+      line-height:1.7;
+    }
+
+    li{ margin: 6px 0; }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 560px){
+      .two{ grid-template-columns: 1fr; }
+    }
+
+    .pill{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .pill span{
+      color: rgba(234,240,255,.92);
+      font-weight: 650;
+      letter-spacing:.2px;
+    }
+    .pill small{
+      color: var(--muted);
+    }
+
+    .actions{
+      margin-top: 12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight: 700;
+      letter-spacing:.25px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.18));
+      color: var(--txt);
+      box-shadow: 0 14px 35px rgba(0,0,0,.35);
+      transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow: 0 18px 44px rgba(0,0,0,.45), 0 0 22px rgba(34,211,238,.12);
+    }
+
+    .btn.secondary{
+      background: rgba(255,255,255,.06);
+    }
+
+    .footer{
+      padding: 14px 18px;
+      text-align:center;
+      color: rgba(170,182,214,.9);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+
+    /* Detallito gamer: “scanline” suave */
+    .scanline{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(255,255,255,.05) 50%,
+        transparent 100%);
+      background-size: 100% 14px;
+      opacity:.06;
+      pointer-events:none;
+      mix-blend-mode: overlay;
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
+  <div class="wrap">
+    <div class="card">
+      <div class="scanline"></div>
 
-<header>
-    <img class="avatar" src="imagenes/Playstation.jpeg" alt="Foto personal">
-    <div class="header-info">
-        <h1>Héctor Vergara</h1>
-        <p>Estudiante de Ingeniería en Informática</p>
-        <p>Email: correo@ejemplo.com | Tel: +52 000 000 0000</p>
-        <p>México</p>
+      <header>
+        <div class="top">
+          <img class="avatar" src="imagenes/Playstation.jpeg" alt="Foto personal">
 
-        
+          <div class="title">
+            <h1 class="name">
+              Héctor Vergara
+              <span class="tag">GAMER MODE</span>
+            </h1>
+            <div class="role">Estudiante de Ingeniería en Informática</div>
+
+            <div class="meta">
+              <div class="chip"><span class="dot"></span><span>correo@ejemplo.com</span></div>
+              <div class="chip"><span class="dot purple"></span><span>+52 000 000 0000</span></div>
+              <div class="chip"><span class="dot green"></span><span>México</span></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- Columna izquierda -->
+        <div class="panel">
+          <h2>Perfil</h2>
+          <p>
+            Estudiante de Ingeniería en Informática con interés en desarrollo de software, bases de datos y tecnologías web.
+            Me enfoco en aprender constantemente y mejorar mis habilidades técnicas con proyectos reales.
+          </p>
+
+          <h2 style="margin-top:14px;">Experiencia / Proyectos</h2>
+          <ul>
+            <li>Aplicación móvil de bienestar estudiantil (retos, hábitos y gamificación).</li>
+            <li>Sistema punto de venta para tienda local (roles, ventas, BD).</li>
+            <li>Proyectos web con HTML/CSS/JS y conexión a bases de datos.</li>
+          </ul>
+
+          <div class="actions">
+            <a class="btn" href="Informacion_Materia.html">Ir a Información de la Materia</a>
+            <a class="btn secondary" href="#habilidades">Ver Habilidades</a>
+          </div>
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="panel" id="habilidades">
+          <h2>Habilidades</h2>
+
+          <div class="two">
+            <div class="pill">
+              <span>Programación</span>
+              <small>Java / Kotlin / Python</small>
+            </div>
+            <div class="pill">
+              <span>Web</span>
+              <small>HTML, CSS, JavaScript</small>
+            </div>
+            <div class="pill">
+              <span>Bases de Datos</span>
+              <small>MySQL / Firebase</small>
+            </div>
+            <div class="pill">
+              <span>Soft Skills</span>
+              <small>Trabajo en equipo</small>
+            </div>
+          </div>
+
+          <h2 style="margin-top:14px;">Educación</h2>
+          <p>
+            <strong>Ingeniería en Informática</strong><br>
+            Instituto Tecnológico Superior de Acatlán de Osorio<br>
+            2021 - Actualidad
+          </p>
+
+          <h2 style="margin-top:14px;">Idiomas</h2>
+          <ul>
+            <li>Español (Nativo)</li>
+            <li>Inglés (Intermedio)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer">
+        © 2026 Héctor Vergara — CV estilo gamer
+      </div>
     </div>
-</header>
-
-<section>
-<h2>Perfil</h2>
-<p>
-Estudiante de Ingeniería en Informática con interés en desarrollo de software, bases de datos y tecnologías web.
-Busco mejorar constantemente mis habilidades y participar en proyectos reales.
-</p>
-</section>
-
-<section class="grid">
-<div>
-<h2>Habilidades</h2>
-<ul>
-<li>Java / Kotlin / Python</li>
-<li>HTML, CSS, JavaScript</li>
-<li>MySQL y Firebase</li>
-<li>Resolución de problemas</li>
-<li>Trabajo en equipo</li>
-</ul>
-</div>
-
-<div>
-<h2>Idiomas</h2>
-<ul>
-<li>Español (Nativo)</li>
-<li>Inglés (Intermedio)</li>
-</ul>
-</div>
-</section>
-
-<section>
-<h2>Educación</h2>
-<p>
-<strong>Ingeniería en Informática</strong><br>
-Instituto Tecnológico Superior de Acatlán de Osorio<br>
-2021 - Actualidad
-</p>
-</section>
-
-<section>
-<h2>Experiencia / Proyectos</h2>
-<ul>
-<li>Aplicación móvil de bienestar estudiantil</li>
-<li>Sistema punto de venta para tienda local</li>
-<li>Aplicaciones Android con base de datos</li>
-</ul>
-
-<a href="Informacion_Materia.html" class="boton">Ir a Información de la Materia</a>
-</section>
-
-<div class="footer">
-© 2026 Héctor Vergara
-</div>
-
-</div>
-
-
-
+  </div>
 </body>
 </html>
