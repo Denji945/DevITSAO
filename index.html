@@ -116,17 +116,14 @@ li{ margin:6px 0; }
 <div class="container">
 
 <header>
-    <img id="preview" class="avatar" src="" alt="Foto personal">
+    <img class="avatar" src="images/foto.jpg" alt="Foto personal">
     <div class="header-info">
         <h1>Héctor Vergara</h1>
         <p>Estudiante de Ingeniería en Informática</p>
         <p>Email: correo@ejemplo.com | Tel: +52 000 000 0000</p>
         <p>México</p>
 
-        <div class="upload">
-            <label><strong>Agregar tu foto:</strong></label><br>
-            <input type="file" accept="image/*" onchange="cargarFoto(event)">
-        </div>
+        
     </div>
 </header>
 
@@ -185,17 +182,7 @@ Instituto Tecnológico Superior de Acatlán de Osorio<br>
 
 </div>
 
-<script>
-function cargarFoto(event){
-    const archivo = event.target.files[0];
-    if(!archivo) return;
-    const lector = new FileReader();
-    lector.onload = function(e){
-        document.getElementById('preview').src = e.target.result;
-    }
-    lector.readAsDataURL(archivo);
-}
-</script>
+
 
 </body>
 </html>
